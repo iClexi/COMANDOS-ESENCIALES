@@ -1,0 +1,119 @@
+
+KIT DE SUPERVIVENCIA EN UBUNTU
+==============================
+
+🔍 DIAGNÓSTICO Y MONITOREO
+--------------------------
+# Ver información básica del sistema
+uname -a
+
+# Ver memoria RAM disponible y usada
+free -h
+
+# Monitorear procesos en tiempo real
+top
+htop   # (Instalar con sudo apt install htop)
+
+# Ver el uso de disco
+df -h
+
+# Ver tamaño de carpetas
+du -sh *
+
+# Mostrar puertos abiertos y procesos que los usan
+sudo lsof -i -P -n
+sudo netstat -tulnp    # (puede requerir instalar net-tools)
+
+# Ver historial de comandos
+history
+
+
+🛠 RECUPERACIÓN Y REPARACIÓN
+----------------------------
+# Reparar paquetes rotos
+sudo apt --fix-broken install
+
+# Reconfigurar paquetes
+sudo dpkg --configure -a
+
+# Limpiar caché y paquetes no usados
+sudo apt autoremove --purge
+sudo apt clean
+
+# Buscar y reparar errores de disco
+sudo fsck /dev/sdX    # (Reemplaza X por tu disco, ej: sda1)
+
+
+🔑 USUARIOS Y PERMISOS
+----------------------
+# Crear usuario
+sudo adduser nombre_usuario
+
+# Cambiar contraseña
+passwd nombre_usuario
+
+# Añadir usuario a sudoers
+sudo usermod -aG sudo nombre_usuario
+
+# Ver permisos de un archivo
+ls -l archivo
+
+# Cambiar propietario
+sudo chown usuario:grupo archivo
+
+# Cambiar permisos (ej: lectura/escritura/ejecución)
+sudo chmod 755 archivo
+
+
+📦 PAQUETES Y ACTUALIZACIONES
+-----------------------------
+# Actualizar repos y paquetes
+sudo apt update && sudo apt upgrade -y
+
+# Instalar paquete
+sudo apt install nombre_paquete
+
+# Eliminar paquete
+sudo apt remove nombre_paquete
+sudo apt purge nombre_paquete
+
+
+📡 RED Y CONECTIVIDAD
+---------------------
+# Ver IPs
+ip a
+ifconfig    # (requiere net-tools)
+
+# Hacer ping
+ping 8.8.8.8
+ping google.com
+
+# Probar conexión a puerto
+nc -zv host puerto
+
+# Ver tabla de rutas
+ip route
+
+
+🐧 MODO RESCATE Y EMERGENCIA
+----------------------------
+# Reiniciar sistema
+sudo reboot
+
+# Apagar sistema
+sudo poweroff
+
+# Entrar a modo de recuperación en GRUB
+# (Al arrancar, presiona Shift o Esc y selecciona "Advanced options")
+
+
+📜 LOGS Y ERRORES
+-----------------
+# Ver último log del sistema
+journalctl -xe
+
+# Logs de inicio
+dmesg | less
+
+# Logs de un servicio
+sudo journalctl -u nombre_servicio
